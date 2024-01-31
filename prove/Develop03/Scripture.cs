@@ -3,33 +3,52 @@ using System.Collections.Generic;
 
 public class Scriptures
 {
-    private string _reference;
-
+    private Reference _reference;
     private List<Word> _words;
-    
-    public Scriptures(string referenceText, string text)
+
+    public Scriptures(Reference reference, string text)
+    {
+        _reference = reference;
+        _words = new List<Word>();
+        
+        string[] words = text.Split(' ');
+
+        foreach (var word in words)
         {
-            _reference = new Reference(referenceText);
-            _words = new List<Word>();
- 
-            foreach (var word in text.Split(' '))
-        {
-            _words.Add(new Word(_words));
+            _words.Add(new Word(word));
         }
     }
 
     public void HideRandomWords(int numberToHide)
     {
-
+        Random random = new Random();
+        for (int i = 0; i < numberToHide; i++)
+        {
+           int index = random.Next(0, _words.Count);
+           _words[index].Hide();
+        }
     }
 
     public string GetDisplayText()
     {
-        return "";
+        string displayText =  " ";
+        foreach (Word word in _words)
+        {
+            displayText += word.GetDisplayText() + " ";
+
+        }
+        return displayText;
     }
 
     public bool IsCompletelyHidden()
     {
+        foreach (Word word in _words)
+        {
+            if (!word.IsHidden())
+            {
+                return false;
+            }
+        }
         return true;
     }
 }

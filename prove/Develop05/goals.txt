@@ -1,0 +1,2 @@
+Study Scriptures,Read scriptures for 20 minutes,10,False
+Exercise,Exercise 3 times a week,15,0,3,5

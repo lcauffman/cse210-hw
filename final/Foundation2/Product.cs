@@ -4,10 +4,10 @@ class Product
 {
     private string name;
     private string productId;
-    float  price;
+    private double  price;
     private int quantity;
 
-    public Product(string name, string productId, float price, int quantity)
+    public Product(string name, string productId, double price, int quantity)
     {
         this.name = name;
         this.productId = productId;

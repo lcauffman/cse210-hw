@@ -1,34 +1,25 @@
- class Video
+class Video
 {
-    private string _title;
-    private string _author;
-    private int _length;
-    private List<Comment> _comments = new List<Comment>();
+    public string Title { get; private set; }
+    public string Author { get; private set; }
+    public int Length { get; private set; }
+    public List<Comment> Comments { get; private set; }
 
     public Video(string title, string author, int length)
     {
-        _title = title;
-        _author = author;
-        _length = length;
-        
+        Title = title;
+        Author = author;
+        Length = length;
+        Comments = new List<Comment>();
     }
 
-    public void AddComment(string commenter, string text)
+    public void AddComment(string commenter, string comment)
     {
-        _comments.Add(new Comment(commenter, text));
-    
+        Comments.Add(new Comment(commenter, comment));
     }
 
-    public void DisplayInfo()
+    public string GetInfoAsString()
     {
-        Console.WriteLine($"Title: {_title}");
-        Console.WriteLine($"Author: {_author}");
-        Console.WriteLine($"Length: {_length} seconds");
-        Console.WriteLine($"Number of Comments: {_comments.Count}");
-
-        foreach (Comment comment in _comments)
-        {
-            comment.Display();
-        }
+        return $"Title: {Title}\nAuthor: {Author}\nViews: {Length}\nComments: {string.Join(", ", Comments.Select(c => c.GetCommentInfo()))}";
     }
 }

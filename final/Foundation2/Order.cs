@@ -1,5 +1,3 @@
-//This initializes the order, customer, and product. It then associates these with a packing label, shipping label, and price.
-
 class Order
 {
     private Customer customer;
@@ -30,6 +28,7 @@ class Order
 
     public string GetShippingLabel()
     {
-        return customer.GetCustomerAddress();
+        
+        return $"{customer.Name}\n{customer.GetCustomerAddress()}";
     }
 }

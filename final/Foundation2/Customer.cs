@@ -4,6 +4,8 @@ class Customer
     private string name;
     private Address address;
 
+    public string Name { get => name; set => name = value; }
+
     public Customer(string name, Address address)
     {
         this.name = name;

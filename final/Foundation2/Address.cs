@@ -1,5 +1,3 @@
-//The function of address is to initialize and address, check to make sure its in the USA, and then format and return it.
-
 using System;
 
 class Address
